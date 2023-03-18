@@ -1,0 +1,33 @@
+<?php
+session_start();
+
+if(!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
+
+$user_id = $_SESSION["user_id"];
+require "../conn.php";
+
+$id = $_GET["id"];
+if(empty($id)) {
+    header("Location: artikel.php");
+    exit;
+}
+if(!is_numeric($id)) die("404");
+
+$image = query("SELECT image FROM posts WHERE id_user = '$user_id' AND id = $id")[0]["image"];
+mysqli_query($conn, "DELETE FROM posts WHERE id_user = '$user_id' AND id = $id");
+
+if(unlink("uploads/$image") && mysqli_affected_rows($conn) > 0) {
+    echo "
+        <script>
+            alert('Sukses Dihapus');
+            window.location = 'blog.php';
+        </script>
+        ";
+} else {
+    echo "<script>alert('Gagal Dihapus')</script>";
+}
+
+?>
