@@ -34,12 +34,3 @@ if(hamburger) {
         }
     });
 }
-
-// const src = document.getElementById('src');
-// if(src) {
-//     const form = document.querySelector('.search-bar form');
-//     form.addEventListener('submit', () => {
-//         const searchVal = document.querySelector('input[name="src"]');
-//         window.location = 'index.php?src=' + searchVal.value;
-//     });
-// }
