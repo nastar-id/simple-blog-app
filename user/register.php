@@ -6,11 +6,11 @@ require "../conn.php";
 $msg = "";
 
 if(isset($_POST["nama"])) {
-    $nama = htmlspecialchars($_POST["nama"]);
-    $user = htmlspecialchars($_POST["user"]);
-    $mail = htmlspecialchars($_POST["email"]);
-    $pass = htmlspecialchars($_POST["pass"]);
-    $pass2 = htmlspecialchars($_POST["pass2"]);
+    $nama = $_POST["nama"];
+    $user = $_POST["user"];
+    $mail = $_POST["email"];
+    $pass = $_POST["pass"];
+    $pass2 = $_POST["pass2"];
 
     $same_user = mysqli_query($conn, "SELECT username FROM members WHERE username = '$user'");
     $same_email = mysqli_query($conn, "SELECT email FROM members WHERE email = '$mail'");
